@@ -4,7 +4,7 @@
 
 # Kico Style 1.5
 # By: Dreamer-Paul
-# Last Update: 2017.8.27
+# Last Update: 2017.9.24
 
 一个简洁、有趣的开源响应式框架，仅包含基础样式，需按照一定规则进行二次开发。
 
@@ -62,24 +62,23 @@ nav, section, main{
 }
 
 /* - 滚动条 */
-::-webkit-scrollbar {
+::-webkit-scrollbar{
     width: 10px;
-    height: 10px
+    height: 10px;
 }
-::-webkit-scrollbar-thumb {
-    min-height: 28px;
-    background-color: rgba(0,0,0,.2);
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background: rgba(0,0,0,.2);
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    border-radius: 5px;
     -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07)
 }
-::-webkit-scrollbar-track:hover {
-    background-color: rgba(0,0,0,.05);
+::-webkit-scrollbar-track:hover{
+    background: rgba(0,0,0,.05);
     -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1)
 }
 
-::-webkit-scrollbar-track:active {
+::-webkit-scrollbar-track:active{
     background-color: rgba(0,0,0,.05);
     -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.14),inset -1px -1px 0 rgba(0,0,0,.07)
 }
@@ -93,7 +92,7 @@ nav, section, main{
 
 /* 1 - 容器
 -------------------------------- */
-main, footer{
+body > main, body > footer{
     overflow: hidden;
 }
 
@@ -336,10 +335,10 @@ input[readonly]{
     background: rgb(235, 235, 228);
 }
 input, textarea, select{
-    outline: 0;
+    outline: none;
     font: inherit;
 }
-input[type="text"], input[type="email"], input[type="url"], input[type="password"], textarea, select{
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="number"], input[type="search"], textarea, select{
     padding: .5em;
     color: inherit;
     border-radius: 4px;
@@ -414,10 +413,11 @@ textarea{
     width: 60px;
     height: 30px;
     cursor: pointer;
+    background: #eee;
     position: relative;
     border-radius: 50px;
-    border: 1px solid #ccc;
-    background: rgba(0,0,0,.05);
+    border: 1px solid #ddd;
+    transition: border .3s, background .3s;
 }
 .bk-form input[type="checkbox"].switch:before{
     margin: 0;
@@ -427,13 +427,16 @@ textarea{
     height: 28px;
     display: block;
     box-shadow: none;
+    background: #fff;
     position: absolute;
     border-radius: 100%;
-    background: rgba(0,0,0,0.2);
-    transition: background 0.3s, transform 0.3s;
+    transition: transform 0.3s;
+}
+.bk-form input[type="checkbox"].switch:checked{
+    background: #3498db;
+    border-color: #3498db;
 }
 .bk-form input[type="checkbox"].switch:checked:before{
-    background: #3498db;
     transform: translateX(30px);
 }
 
@@ -531,8 +534,13 @@ iframe{
 }
 
 /* - 详细信息 */
-details{
+details > summary{
     outline: none;
+    cursor: pointer;
+    user-select: none;
+}
+details > summary + *{
+    margin-top: .5em;
 }
 
 /* - 栅格系统 */
@@ -587,7 +595,7 @@ details{
     margin-bottom: 2em;
 }
 .row [class*="col-s-"]:last-child, [class*="col-m-"]:last-child, [class*="col-l-"]:last-child{
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
 }
 
 @media screen and (min-width: 600px){
