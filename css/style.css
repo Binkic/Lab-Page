@@ -1,0 +1,284 @@
+/* ----
+
+# Binkic SST 0.8
+# By: Dreamer-Paul
+# Last Update: 2017.7.2
+
+缤奇二级页面通用模板，实验室版本。
+
+欢迎你加入缤奇，和我们一起改变世界。
+本代码为缤奇保罗原创，并遵守 GPL3 开源协议。保罗的个人博客：https://hi-paul.space
+
+---- */
+
+@import url("binkic.css"); /* 引用缤奇基层框架 */
+
+body{
+    background: #fafafa;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: normal;
+}
+
+
+/* 1 - 页眉
+-------------------------------- */
+header{
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    z-index: 330;
+    position: fixed;
+}
+
+header .head-title{
+    background: #3498db;
+    box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.22);
+}
+
+/* -- 导航区 */
+header .head-title .toggle-btn, header .head-title .search-btn{
+    width: 60px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+header .head-title .toggle-btn:hover, header .head-title .search-btn:hover{
+    background: rgba(0, 0, 0, .2);
+}
+header .head-title .toggle-btn:before, header .head-title .search-btn:before{
+    display: block;
+    text-align: center;
+    font: 1.5em/60px "FontAwesome";
+}
+
+header .head-title .toggle-btn{
+    float: left;
+    background: rgba(0, 0, 0, .1);
+}
+header .head-title .toggle-btn:before{
+    content: "\f00a";
+}
+
+header .head-title .search-btn{
+    float: right;
+}
+header .head-title .search-btn:before{
+    content: '\f002';
+}
+
+/* -- 菜单区 */
+header .head-menu{
+    left: 0;
+    top: 60px;
+    z-index: -1;
+    padding: 15px;
+    display: none;
+    background: #fff;
+    position: absolute;
+    border-radius: 0 0 4px 0;
+    box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+header .head-menu.active, header .head-search.active{
+    display: block;
+    animation: fade-in-bottom 0.3s both;
+}
+header .head-menu.remove, header .head-search.remove{
+    display: block;
+    animation: fade-off 0.3s both;
+}
+
+header .head-menu ul{
+    display: block;
+    margin: 0 -10px -10px 0;
+}
+.head-title:after, header .head-menu ul:after{
+    clear: both;
+    content: '';
+    display: block;
+}
+
+header .head-menu li{
+    display: block;
+    border-radius: 4px;
+    background: #3498db;
+    margin: 0 10px 10px 0;
+    transition: background 0.3s;
+}
+header .head-menu li:hover{
+    background: #2f89c5;
+}
+
+header .head-menu li a{
+    padding: 1em;
+    color: inherit;
+    display: block;
+}
+header .head-menu li i{
+    float: left;
+    margin-right: .75em;
+    line-height: inherit;
+}
+
+@media screen and (min-width: 500px){
+    header .head-menu ul{
+        max-width: 220px;
+        text-align: center;
+    }
+
+    header .head-menu li{
+        float: left;
+        width: 100px;
+        height: 100px;
+    }
+
+    header .head-menu li i{
+        float: none;
+        display: block;
+        font-size: 2em;
+        margin-right: 0;
+        line-height: 45px;
+    }
+}
+
+/* -- 搜索菜单 */
+header .head-search{
+    right: 0;
+    top: 60px;
+    z-index: -1;
+    display: none;
+    background: #fff;
+    padding: 5px 10px;
+    position: absolute;
+    border-radius: 0 0 0 4px;
+    box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+header .head-search input{
+    border: 0;
+}
+
+/* -- 标题区 */
+header .site-title{
+    left: 0;
+    right: 0;
+    margin: 0 60px;
+    padding: 0 1em;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font: 1.5em/60px normal;
+}
+
+@media screen and (max-width: 500px){
+    header .site-title{
+        padding: 0 .5em;
+        font-size: 1.25em;
+        text-align: center;
+    }
+}
+
+/* 2 - 正文
+-------------------------------- */
+main{
+    padding: 50px 0;
+    margin-top: 60px;
+}
+
+/* - 头部 */
+main .main-head{
+    color: #fff;
+}
+main .main-head .background{
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 450px;
+    overflow: hidden;
+    position: absolute;
+    background: url(../img/main-head.jpg) center/cover fixed;
+}
+
+.main-content{
+    padding: 1.5em;
+    background: #fff;
+    margin-top: 50px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+}
+
+@media screen and (max-width: 600px){
+    .main-content{
+        border-radius: 0;
+    }
+}
+
+.single{
+    margin-bottom: 30px;
+}
+.single:last-child{
+    margin-bottom: 0;
+}
+
+.slider img{
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+.single .row{
+    margin-bottom: 2em;
+}
+
+.testing-item{
+    color: #fff;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 3px #ddd;
+    border-radius: 4px;
+    transition: box-shadow 0.3s;
+}
+.testing-item:hover{
+    box-shadow: 0 5px 30px #888;
+}
+.testing-item:hover img{
+    transform: scale(1.1, 1.1);
+}
+.testing-item img{
+    vertical-align: middle;
+    transition: transform 0.3s;
+}
+.testing-item h4{
+    color: #fff;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: .75em 0;
+    position: absolute;
+    text-align: center;
+    border-radius: 0 0 4px 4px;
+    background: linear-gradient(rgba(14,20,42,0),rgba(14,20,42,.6),rgba(14,20,42,.8))
+}
+
+/* 3 - 页尾
+------------------------------ */
+footer{
+    padding: 30px 0;
+    background: #111;
+    text-align: center;
+}
+
+footer a{
+    color: #9e9e9e;
+}
+footer a:hover{
+    color: #ffb03a;
+}
+
+footer p{
+    color: #757575;
+}
